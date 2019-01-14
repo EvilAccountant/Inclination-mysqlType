@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/inclination?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+mybatis:
+  type-aliases-package: com.ming.inclination.entity
+  mapper-locations: classpath:mapper/*.xml #  所有的mapper映射文件
+
+server:
+  port: 8877
+
+oracleUrl: "jdbc:oracle:thin:@192.168.1.100:1521:orcl" #Oracle连接名
+#oracleUrl: "jdbc:oracle:thin:@192.168.26.31:1521:dqzx" #Oracle连接名
+oracleUsername: "dqzx"  #用户名
+oraclePassword: "dqzx"  #密码
+
+folderPath: "D:\\data" #文件夹路径
+bridgeId: "0781216DF69E4055A51B48FA480E04AA" #桥梁ID
+
+#所有CAN设备的Id号以及位置数据，英文逗号分隔
+canIds: "0x0581,0x0582,0x0583,0x0584,0x0585,0x0586,0x0587,0x0588" #canId
+canDistance: "0,11.43,22.86,34.29,45.72,57.15,68.58,80"  #测点距离
+canNumber: 8  #can数量
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ming.inclination.dao.TblOriginOffsetDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.ming.inclination.entity.TblOriginOffset">
+        <result column="id" property="id"/>
+        <result column="can_Id" property="canId"/>
+        <result column="data" property="data"/>
+        <result column="valuex" property="valueX"/>
+        <result column="valuey" property="valueY"/>
+        <result column="data_time" property="dataTime"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        can_id,
+        data,
+        valuex,
+        valuey,
+        data_time
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO tbl_origin_offset
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.canId != null"> can_id, </if>
+            <if test="pojo.data != null"> data, </if>
+            <if test="pojo.valueX != null"> valuex, </if>
+            <if test="pojo.valueY != null"> valuey, </if>
+            <if test="pojo.dataTime != null"> data_time, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.canId != null"> #{pojo.canId}, </if>
+            <if test="pojo.data != null"> #{pojo.data}, </if>
+            <if test="pojo.valueX != null"> #{pojo.valueX}, </if>
+            <if test="pojo.valueY != null"> #{pojo.valueY}, </if>
+            <if test="pojo.dataTime != null"> #{pojo.dataTime}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO tbl_origin_offset (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator="," >
+            (
+            #{pojo.id},
+            #{pojo.canId},
+            #{pojo.data},
+            #{pojo.valueX},
+            #{pojo.valueY},
+            #{pojo.dataTime}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE tbl_origin_offset
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.canId != null"> can_id = #{pojo.canId}, </if>
+            <if test="pojo.data != null"> data = #{pojo.data}, </if>
+            <if test="pojo.valueX != null"> valuex = #{pojo.valueX}, </if>
+            <if test="pojo.valueY != null"> valuey = #{pojo.valueY}, </if>
+            <if test="pojo.dataTime != null"> data_time = #{pojo.dataTime} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="findDataByTimeRange" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM tbl_origin_offset too
+        WHERE too.data_time <![CDATA[ >= ]]> #{headTime}
+        AND too.data_time <![CDATA[ <= ]]> #{endTime}
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM tbl_origin_offset where id = #{pojo.id}
+    </delete>
+
+
+    <select id="findidByNo" parameterType="String" resultType="String">
+        SELECT tbb.id
+        FROM tbl_bridge_base tbb
+        WHERE tbb.highway_bridge_no = #{bridgeNo}
+    </select>
+
+
+
+</mapper>
